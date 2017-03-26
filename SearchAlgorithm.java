@@ -53,6 +53,15 @@ public class SearchAlgorithm {
 	    return currSolution;
 	  }//end simulatedAnnealing
 	
+	public Schedule backtracking(SchedulingProblem problem, long deadline){
+		Schedule currSolution = problem.getEmptySchedule();
+		
+		//TODO
+		
+		
+		return currSolution;
+	}//end backtracking
+	
 	//method to initialize the first schedule randomly
 	  public static Schedule startingSched(SchedulingProblem problem){
 		  Schedule currSolution = problem.getEmptySchedule();
@@ -67,10 +76,10 @@ public class SearchAlgorithm {
 	  	      		if (c1.timeSlotValues[j] > 0) {
 	  	      			for (int k = 0; k < problem.rooms.size(); k++) {
 	  	      				//random values
-	  	      				int ran1 = (int)(Math.random()*problem.rooms.size());
-	  	      				int ran2 = (int)(Math.random()*c1.timeSlotValues.length);
-	  	      				if (currSolution.schedule[ran1][ran2] < 0) {
-	  	      					currSolution.schedule[ran1][ran2] = i;
+//	  	      				int ran1 = (int)(Math.random()*problem.rooms.size());
+//	  	      				int ran2 = (int)(Math.random()*c1.timeSlotValues.length);
+	  	      				if (currSolution.schedule[k][j] < 0) {
+	  	      					currSolution.schedule[k][j] = i;
 	  	      					scheduled = true;
 	  	      					break;
 	  	      				}//end if
@@ -88,6 +97,7 @@ public class SearchAlgorithm {
 		  return Math.exp((energy - newEnergy) / temp); 
 	  }//end acceptanceProbability
 
+	  
 	  // This is a very naive baseline scheduling strategyΩ/
 	  // It should be easily beaten by any reasonable strategy
 	  public Schedule naiveBaseline(SchedulingProblem problem, long deadline) {
