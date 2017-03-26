@@ -1,5 +1,7 @@
 # AISchedulingProblem
-## CS 4320/5314 Homework Assignment #2 Search for Room Scheduling DUE: Sun, March 26 at 11:59 PM
+## CS 4320/5314 Homework Assignment #2 
+## Search for Room Scheduling 
+## DUE: Sun, March 26 at 11:59 PM
 
 Objective: To explore the use of different search techniques for solving a complex optimization problem.
 Groups: You may optionally work in groups of two (2) students for this project.
