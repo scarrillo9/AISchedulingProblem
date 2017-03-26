@@ -28,12 +28,9 @@ Courses also have preferred buildings. Courses scheduled in another building rec
 A solution is a mapping from rooms and time slots to courses. That is, each room can be assigned to hold one course in each available time slot. Courses are identified by their indices from 0 to N-1.
 
 The overall value of a schedule is calculated as follows:
-• NEGATIVE_INFINITY if the schedule is invalid (e.g., courses assigned multiple
-times to more than one room or time slot).
-• The sum of the values and time slot bonuses for all courses assigned to valid
-rooms (rooms with a large enough capacity).
-• Subtracting the sum of the penalties for scheduling courses away from their
-preferred building.
+* NEGATIVE_INFINITY if the schedule is invalid (e.g., courses assigned multiple times to more than one room or time slot).
+* The sum of the values and time slot bonuses for all courses assigned to valid rooms (rooms with a large enough capacity).
+* Subtracting the sum of the penalties for scheduling courses away from their preferred building.
 
 You can find the exact definitions of these in the provided code. 
 
