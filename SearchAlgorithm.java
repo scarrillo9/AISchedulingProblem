@@ -54,13 +54,47 @@ public class SearchAlgorithm {
 	}//end simulatedAnnealing
 
 	public Schedule backtracking(SchedulingProblem problem, long deadline){
-		Schedule currSolution = problem.getEmptySchedule();
+		Schedule solution = problem.getEmptySchedule();
+		
+		for (int i = 0; i < problem.courses.size(); i++) {
+			Course c = problem.courses.get(i);
+			boolean scheduled = false;
+			
+			for (int j = 0; j < c.timeSlotValues.length; j++) {
+				if (scheduled) break;
+				if (c.timeSlotValues[j] > 0) {
+					double x = c.preferredLocation.xCoor;
+					double y = c.preferredLocation.yCoor;
+					
+					for (int k = 0; k < problem.rooms.size(); k++) {
+						if (preferredBCPS(problem, x, y, k)) {
+							solution.schedule[k][j] = i;
+							scheduled = true;
+							break;
+						}//end if
+					}//end for
+					if(!scheduled){
+						for (int k = 0; k < problem.rooms.size(); k++) {
+							if (solution.schedule[k][j] < 0) {
+								solution.schedule[k][j] = i;
+								scheduled = true;
+								break;
+							}//end if
+						}//end for
+					}//end if hasn't been scheduled
+				}//end if
+			}//end for
+			
+		}//end for
 
-		//TODO
-
-
-		return currSolution;
+		return solution;
 	}//end backtracking
+	
+	public static boolean preferredBCPS(SchedulingProblem problem, double x, double y, int k){
+		if(x == problem.rooms.get(k).b.xCoor && y == problem.rooms.get(k).b.yCoor)
+			return true;
+		return false;
+	}//end preferredBCPS
 
 	//method to initialize the first schedule randomly
 	public static Schedule startingSched(SchedulingProblem problem){
